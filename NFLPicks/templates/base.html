@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NFL Picks</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+    .mainBanner{
+        height: 100px;
+        background: blue;
+        position: relative;
+
+        text-align: center;
+        color: red;
+    }
+
+    .mainBanner h1{
+        height: 100%;
+        line-height: 200%;
+        font-size: 300%;
+        font-family: sans-serif;
+    }
+
+    .mainBanner img{
+        height: 100%;
+    }
+
+    .navBar{
+        height: 40px;
+        design: inline-block;
+        background: black;
+    }
+
+    .contentPage{
+        background: white;
+        height: 400px;
+    }
+
+    .content{
+        background: white;
+        height: 100%;
+        padding: 2%;
+    }
+
+    .navBar button{
+        background: black;
+        border-color: black;
+        color: white;
+        width: 10%;
+        height: 100%;
+    }
+
+    body{
+        background: darkslategray;
+    }
+
+
+</style>
+
+<body>
+{% load static %}
+
+<!--TOP Banner-->
+<div class="mainBanner">
+    <h1>
+        NFL Picks
+        <img align="right" src="{% static "picks/Logo-NFL.png" %}" alt="My image"/>
+    </h1>
+</div>
+
+<!--Navigation Bar-->
+<div class="navBar">
+    <a href="/selectPicks"><button>Submit Picks</button></a>
+    <a href=""><button>Results</button></a>
+    <button style="width: 58%;">---</button>
+    {% if user.is_authenticated %}
+        <button>{{user.username}}</button>
+        <a href="/accounts/logout"><button>Logout</button></a>
+    {% else %}
+        <a href="/accounts/login"><button>Login</button></a>
+        <a href="/accounts/createUser"><button>Create User</button></a>
+    {% endif %}
+</div>
+
+
+<div class="contentPage">
+    <div class="content">
+        {{message}}
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+
+</body>
+</html>

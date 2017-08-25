@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="/submitPicks/" method="post">
+    {% csrf_token %}
+
+    <label class="radio-inline" style="width: 5%;">
+        Home
+    </label>
+    <label class="radio-inline" style="width: 5%;">
+        Away
+    </label>
+    <label class="radio-inline" style="width: 5%;">
+        Spread
+    </label>
+    <hr>
+    {% for match in matches %}
+        <label class="radio-inline" style="width: 5%;">
+            <input type="radio" name="{{match.pk}}" value="{{match.home}}" required>{{match.home.team_abbrev}}
+        </label>
+        <label class="radio-inline" style="width: 5%;">
+            <input type="radio" name="{{match.pk}}" value="{{match.away}}" required>{{match.away.team_abbrev}}
+        </label>
+        <label class="radio-inline" style="width: 5%;">
+            {{match.spread}}
+        </label>
+        <hr>
+    {% endfor %}
+
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

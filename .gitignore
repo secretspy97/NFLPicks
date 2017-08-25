@@ -1,0 +1,7 @@
+NFLPicks/.idea/*
+NFLPicks/accounts/__pycache__/*
+NFLPicks/NFLPicks/__pycache__/*
+NFLPicks/picks/__pycache__/*
+NFLPicks/accounts/migrations/*
+NFLPicks/picks/migrations/*
+!NFLPicks/picks/migrations/__init__.py

@@ -1,0 +1,10 @@
+---
+applications:
+- name: nfl-picks
+  memory: 512MB
+  disk_quota: 512MB
+  command: bash ./run.sh
+  timeout: 180
+  buildpack: https://github.com/cloudfoundry/python-buildpack
+services:
+env:
