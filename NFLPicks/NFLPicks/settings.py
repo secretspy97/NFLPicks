@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = 'gb!&4)3qal2)00fuq-z$--=l^or*iz$py+=wx9eu(p0d2seq1v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nfl-picks.run.aws-usw02-pr.ice.predix.io', 'localhost']
 
 
 # Application definition
@@ -53,6 +54,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'NFLPicks.urls'
 
+DISABLE_COLLECTSTATIC=1
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -77,12 +80,15 @@ WSGI_APPLICATION = 'NFLPicks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if os.environ.get('VCAP_SERVICES') != None:
+    DATABASES = {'default': dj_database_url.config()}   #Database autconfig, uncomment to automatically connect to bound postgres service
+else:
+    DATABASES = {###defualt sql database packeged with django
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 
 
 # Password validation

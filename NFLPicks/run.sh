@@ -9,9 +9,9 @@ if [-z $VCAP_APP_PORT];
 	else SERVER_PORT=$VCAP_APP_PORT;
 fi
 
-
-echo ------ Create database tables ------
+echo ------ Make database tables ------
 python manage.py makemigrations
+echo ------ Migrate database tables ------
 python manage.py migrate --noinput
 
 echo "from django.contrib.auth.models import User; User.objects.create_superuser('${USER}', '${MAIL}', '${PASS}')" | python manage.py shell

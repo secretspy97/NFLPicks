@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import UserForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -13,10 +13,14 @@ def createUser(request):
         if userForm.is_valid():
             new_user = User.objects.create_user(**userForm.cleaned_data)
             # login(new_user)
-            return HttpResponseRedirect('/thanks/')
+            return render(request, 'base.html', context={"message": "Your account has been created"})
 
     # if a GET (or any other method) we'll create a blank form
     else:
         userForm = UserForm()
 
     return render(request, 'registration/createUser.html', context={"form":userForm})
+
+def logout_view(request):
+    logout(request)
+    return render(request, 'base.html', context={"message": "You have been logged off"})

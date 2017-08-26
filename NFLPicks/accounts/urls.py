@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^createUser/', views.createUser, name='createUser'),
+    url(r'^logout/', views.logout_view, name='logout'),
 ]
