@@ -42,7 +42,6 @@
 
     .content{
         background: white;
-        height: 100%;
         padding: 2%;
     }
 
@@ -75,7 +74,7 @@
 <!--Navigation Bar-->
 <div class="navBar">
     <a href="/selectPicks"><button>Submit Picks</button></a>
-    <a href=""><button>Results</button></a>
+    <a href="/results"><button>Results</button></a>
     <button style="width: 58%;">---</button>
     {% if user.is_authenticated %}
         <button>{{user.username}}</button>

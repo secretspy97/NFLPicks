@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+</style>
+
+    <table>
+        {% for row in table %}
+            <tr>
+                {% for element in row %}
+                    {% if element.won %}
+                        <td style="background: lawngreen;">{{element.val}}</td>
+                    {% elif element.won != None %}
+                        <td style="background: red; color: white;">{{element.val}}</td>
+                    {% else %}
+                        <td>{{element.val}}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

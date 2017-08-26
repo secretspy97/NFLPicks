@@ -16,10 +16,10 @@
     <hr>
     {% for match in matches %}
         <label class="radio-inline" style="width: 5%;">
-            <input type="radio" name="{{match.pk}}" value="{{match.home}}" required>{{match.home.team_abbrev}}
+            <input type="radio" name="{{match.pk}}" value="{{match.home.team_abbrev}}" required>{{match.home.team_abbrev}}
         </label>
         <label class="radio-inline" style="width: 5%;">
-            <input type="radio" name="{{match.pk}}" value="{{match.away}}" required>{{match.away.team_abbrev}}
+            <input type="radio" name="{{match.pk}}" value="{{match.away.team_abbrev}}" required>{{match.away.team_abbrev}}
         </label>
         <label class="radio-inline" style="width: 5%;">
             {{match.spread}}
