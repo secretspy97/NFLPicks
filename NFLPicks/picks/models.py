@@ -36,7 +36,7 @@ class Game(models.Model):
         return self.away.team_abbrev + " @ " + self.home.team_abbrev
 
     class Meta:
-        ordering = ['start_time']
+        ordering = ['start_time', 'home']
 
 class PlayerPick(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')

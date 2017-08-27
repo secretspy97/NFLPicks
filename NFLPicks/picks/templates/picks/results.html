@@ -24,6 +24,8 @@
                         <td style="background: lawngreen;">{{element.val}}</td>
                     {% elif element.won != None %}
                         <td style="background: red; color: white;">{{element.val}}</td>
+                    {% elif element.header %}
+                        <td style="background: black; color: white;">{{element.val}}</td>
                     {% else %}
                         <td>{{element.val}}</td>
                     {% endif %}

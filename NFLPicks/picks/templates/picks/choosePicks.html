@@ -4,25 +4,31 @@
 <form action="/submitPicks/" method="post">
     {% csrf_token %}
 
-    <label class="radio-inline" style="width: 5%;">
+    <label class="radio-inline" style="width: 9%;">
+        Time
+    </label>
+    <label class="radio-inline" style="width: 8%;">
         Home
     </label>
-    <label class="radio-inline" style="width: 5%;">
+    <label class="radio-inline" style="width: 8%;">
         Away
     </label>
-    <label class="radio-inline" style="width: 5%;">
+    <label class="radio-inline" style="width: 8%;">
         Spread
     </label>
     <hr>
     {% for match in matches %}
-        <label class="radio-inline" style="width: 6%;">
+        <label class="radio-inline" style="width: 9%;">
+            {{match.start_time}}
+        </label>
+        <label class="radio-inline" style="width: 8%;">
             <input type="radio" name="{{match.pk}}" value="{{match.home.team_abbrev}}" required>{{match.home.team_name}}
         </label>
-        <label class="radio-inline" style="width: 6%;">
+        <label class="radio-inline" style="width: 8%;">
             <input type="radio" name="{{match.pk}}" value="{{match.away.team_abbrev}}" required>{{match.away.team_name}}
         </label>
-        <label class="radio-inline" style="width: 6%;">
-            {{match.spread}}
+        <label class="radio-inline">
+            {{match.home.team_name}}: {{match.spread}}
         </label>
         <hr>
     {% endfor %}

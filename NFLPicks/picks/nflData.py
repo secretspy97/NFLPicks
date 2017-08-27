@@ -8,7 +8,6 @@ def getData():
     response = requests.request("GET", url)
     json_response = response.text
     json_response = ','.join(x or '-1' for x in json_response.split(','))
-    print(json_response)
     json_response = json.loads(json_response)
     return json_response
 
@@ -20,7 +19,11 @@ def updateGames():
         games_end = getDate(games[-1])
         year = games[0][13]
         week = games[0][12]
-        game_week, created = Week.objects.get_or_create(year=year, week=week, starts=games_start, ends=games_end)
+        # game_week, created = Week.objects.get_or_create(year=year, week=week, starts=games_start, ends=games_end)
+
+        # REMOVE
+        created = False
+        game_week = Week.objects.all()[0]
 
         # Creates inital games:
         game_objects = []
@@ -37,17 +40,18 @@ def updateGames():
         # Update scores
         for game in games:
             home = getTeam(game[4])
-            home_score = game[5]
+            home_score = int(game[5])
             away = getTeam(game[6])
-            away_score = game[7]
+            away_score = int(game[7])
             status = game[2]
             week = game_week
             game_object = Game.objects.get(week=week, home=home, away=away)
             if status == "Final":
                 game_object.home_score = home_score
                 game_object.away_score = away_score
+                spread = game_object.spread
 
-                if(home_score > away_score):
+                if((home_score + spread) > away_score):
                     winner = home
                 else:
                     winner = away

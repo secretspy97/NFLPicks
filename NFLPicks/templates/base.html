@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>NFL Picks</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -9,6 +10,12 @@
 </head>
 
 <style>
+
+    @font-face {
+        font-family: Freshman;
+        src:"{% static "picks/Freshman.ttf" %}";
+    }
+
     .mainBanner{
         height: 100px;
         background: blue;
@@ -20,9 +27,9 @@
 
     .mainBanner h1{
         height: 100%;
-        line-height: 200%;
-        font-size: 300%;
-        font-family: sans-serif;
+        line-height: 140%;
+        font-size: 600%;
+        font-family: Freshman;
     }
 
     .mainBanner img{
@@ -37,7 +44,7 @@
 
     .contentPage{
         background: white;
-        height: 400px;
+        min-height: 400px;
     }
 
     .content{
@@ -49,7 +56,7 @@
         background: black;
         border-color: black;
         color: white;
-        width: 10%;
+        width: 8%;
         height: 100%;
     }
 
@@ -57,16 +64,25 @@
         background: darkslategray;
     }
 
+    .footerBar{
+        height: 30px;
+        color: white;
+        background: black;
+    }
+
+    .footerBar h6{
+        line-height: 250%;
+    }
+
 
 </style>
 
 <body>
-{% load static %}
 
 <!--TOP Banner-->
 <div class="mainBanner">
     <h1>
-        NFL Picks
+        NFL 2017 Season Picks
         <img align="right" src="{% static "picks/Logo-NFL.png" %}" alt="My image"/>
     </h1>
 </div>
@@ -74,7 +90,9 @@
 <!--Navigation Bar-->
 <div class="navBar">
     <a href="/selectPicks"><button>Submit Picks</button></a>
+    <a href="/viewPicks"><button>View Picks</button></a>
     <a href="/results"><button>Results</button></a>
+
     <button style="width: 58%;">---</button>
     {% if user.is_authenticated %}
         <button>{{user.username}}</button>
@@ -95,4 +113,10 @@
 </div>
 
 </body>
+
+<footer>
+    <div class="footerBar">
+        <h6 align="center">LETS GO BUFFALO</h6>
+    </div>>
+</footer>
 </html>

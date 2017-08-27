@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from .forms import UserForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def createUser(request):
@@ -24,3 +25,6 @@ def createUser(request):
 def logout_view(request):
     logout(request)
     return render(request, 'base.html', context={"message": "You have been logged off"})
+
+def profile(request):
+    return HttpResponseRedirect('/viewPicks/')
