@@ -1,0 +1,50 @@
+{% load static %}
+
+@font-face {
+    font-family: Freshman;
+    src:"{% static "picks/Freshman.ttf" %}";
+}
+
+.mainBanner{
+    background: blue;
+    color: red;
+}
+
+.mainBanner h1{
+    font-family: Freshman;
+}
+
+.mainBanner img{
+
+}
+
+.navBar{
+    background: black;
+}
+
+.contentPage{
+    background: white;
+}
+
+.content{
+    background: white;
+}
+
+.navBar button{
+    background: black;
+    border-color: black;
+    color: white;
+}
+
+body{
+    background: darkslategray;
+}
+
+.footerBar{
+    color: white;
+    background: black;
+}
+
+.footerBar h6{
+
+}

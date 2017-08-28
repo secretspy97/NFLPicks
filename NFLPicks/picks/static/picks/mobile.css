@@ -1,0 +1,41 @@
+.mainBanner{
+    height: 100px;
+    position: relative;
+    text-align: center;
+}
+
+.mainBanner h1{
+    height: 100%;
+    line-height: 140%;
+    font-size: 600%;
+}
+
+.mainBanner img{
+    height: 100%;
+}
+
+.navBar{
+    height: 40px;
+    design: inline-block;
+}
+
+.contentPage{
+    min-height: 400px;
+}
+
+.content{
+    padding: 2%;
+}
+
+.navBar button{
+    width: 100%;
+    height: 100%;
+}
+
+.footerBar{
+    height: 30px;
+}
+
+.footerBar h6{
+    line-height: 250%;
+}
