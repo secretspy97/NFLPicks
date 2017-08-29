@@ -18,9 +18,9 @@ def getPicks(request):
     games = Game.objects.filter(week=week)
 
     # Time to view data?
-    # if timezone.now() > week.starts:
-    #     return render(request, 'base.html',
-    #                   context={"message": "Picks are closed for the week. Next weeks picks will become available on Monday"})
+    if timezone.now() > week.starts:
+        return render(request, 'base.html',
+                      context={"message": "Picks are closed for the week. Next weeks picks will become available on Monday"})
 
     return render(request, 'picks/choosePicks.html', context={"matches": games})
 
@@ -55,6 +55,23 @@ def getResults(request):
                       context={"message": "Picks are still open. Results will appear after kickoff on Thursday"})
 
     updateGames()
+    games = Game.objects.filter(week=week)
+    users = User.objects.all()
+
+    table = createTable(games=games, users=users)
+
+    return render(request, 'picks/results.html', context={"table": table})
+
+@login_required
+def getPreviousResults(request, week):
+    week, year = getCurrentWeekYear()
+    week = Week.objects.get(week=week, year=year)
+
+    # Time to view data?
+    if timezone.now() < week.starts:
+        return render(request, 'picks/results.html',
+                      context={"message": "Picks are still open. Results will appear after kickoff on Thursday"})
+
     games = Game.objects.filter(week=week)
     users = User.objects.all()
 

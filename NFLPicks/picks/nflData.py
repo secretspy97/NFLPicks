@@ -19,11 +19,7 @@ def updateGames():
         games_end = getDate(games[-1])
         year = games[0][13]
         week = games[0][12]
-        # game_week, created = Week.objects.get_or_create(year=year, week=week, starts=games_start, ends=games_end)
-
-        # REMOVE
-        created = False
-        game_week = Week.objects.all()[0]
+        game_week, created = Week.objects.get_or_create(year=year, week=week, starts=games_start, ends=games_end)
 
         # Creates inital games:
         game_objects = []

@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
 
 <style>
@@ -14,24 +16,43 @@
         padding: 8px;
     }
 
+    button directionArrow {
+        background: white;
+        border: none;
+    }
+
+    img navSize {
+        height: 12px;
+    }
+
 </style>
 
-    <table>
-        {% for row in table %}
-            <tr>
-                {% for element in row %}
-                    {% if element.won %}
-                        <td style="background: lawngreen;">{{element.val}}</td>
-                    {% elif element.won != None %}
-                        <td style="background: red; color: white;">{{element.val}}</td>
-                    {% elif element.header %}
-                        <td style="background: black; color: white;">{{element.val}}</td>
-                    {% else %}
-                        <td>{{element.val}}</td>
-                    {% endif %}
-                {% endfor %}
-            </tr>
+<div id="navSize">
+    <button class="directionArrow">
+        <img class="navSize" src="{% static 'picks/left_arrow.png' %}">
+    </button>
+    <span>Week: {{week}}</span>
+    <button class="directionArrow">
+        <img class="navSize" src="{% static 'picks/right_arrow.png' %}">
+    </button>
+</div>
+
+<table>
+    {% for row in table %}
+    <tr>
+        {% for element in row %}
+        {% if element.won %}
+        <td style="background: lawngreen;">{{element.val}}</td>
+        {% elif element.won != None %}
+        <td style="background: red; color: white;">{{element.val}}</td>
+        {% elif element.header %}
+        <td style="background: black; color: white;">{{element.val}}</td>
+        {% else %}
+        <td>{{element.val}}</td>
+        {% endif %}
         {% endfor %}
-    </table>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}
