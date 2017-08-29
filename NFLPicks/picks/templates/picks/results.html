@@ -12,30 +12,32 @@
 
     td, th {
         border: 1px solid #dddddd;
-        text-align: left;
+        text-align: center;
         padding: 8px;
     }
 
-    button directionArrow {
+    .directionArrow {
         background: white;
         border: none;
     }
 
-    img navSize {
-        height: 12px;
+    .navSize {
+        height: 20px;
     }
 
 </style>
 
-<div id="navSize">
-    <button class="directionArrow">
-        <img class="navSize" src="{% static 'picks/left_arrow.png' %}">
-    </button>
-    <span>Week: {{week}}</span>
-    <button class="directionArrow">
-        <img class="navSize" src="{% static 'picks/right_arrow.png' %}">
-    </button>
-</div>
+{% if week_id %}
+    <div id="navSize">
+        <a class="directionArrow" href="/results/{{ week_id|add:'-1' }}">
+            <img class="navSize" src="{% static 'picks/left_arrow.png' %}">
+        </a>
+        <span>Week: {{week}}</span>
+        <a class="directionArrow" href="/results/{{ week_id|add:'1' }}">
+            <img class="navSize" src="{% static 'picks/right_arrow.png' %}">
+        </a>
+    </div>
+{% endif %}
 
 <table>
     {% for row in table %}

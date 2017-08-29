@@ -20,7 +20,7 @@ def getPicks(request):
     # Time to view data?
     if timezone.now() > week.starts:
         return render(request, 'base.html',
-                      context={"message": "Picks are closed for the week. Next weeks picks will become available on Monday"})
+                      context={"message": "Picks are closed for the week. Next weeks picks will become available on Tuesday"})
 
     return render(request, 'picks/choosePicks.html', context={"matches": games})
 
@@ -32,7 +32,6 @@ def submitPicks(request):
             team_pick = request.POST.get(key)
         else:
             team_pick = None
-        print(team_pick)
 
         # If the team pick is not None
         if team_pick:
@@ -46,38 +45,34 @@ def submitPicks(request):
 
 @login_required
 def getResults(request):
+    updateGames()
     week, year = getCurrentWeekYear()
     week = Week.objects.get(week=week, year=year)
-
-    # Time to view data?
-    if timezone.now() < week.starts:
-        return render(request, 'picks/results.html',
-                      context={"message": "Picks are still open. Results will appear after kickoff on Thursday"})
-
-    updateGames()
-    games = Game.objects.filter(week=week)
-    users = User.objects.all()
-
-    table = createTable(games=games, users=users)
-
-    return render(request, 'picks/results.html', context={"table": table})
+    return getPreviousResults(request, week.pk)
 
 @login_required
 def getPreviousResults(request, week):
-    week, year = getCurrentWeekYear()
-    week = Week.objects.get(week=week, year=year)
+    if Week.objects.filter(pk=week).exists():
+        week = Week.objects.get(pk=week)
+    else:
+        return getResults(request)
 
     # Time to view data?
     if timezone.now() < week.starts:
+        weekDay = week.starts.strftime("%A")
+        try:  # Server
+            time = week.starts.strftime("%-I:%M%p")
+        except:  # Windows
+            time = week.starts.strftime("%#I:%M%p")
         return render(request, 'picks/results.html',
-                      context={"message": "Picks are still open. Results will appear after kickoff on Thursday"})
+                      context={"message": "Picks are still open. Results will appear after kickoff on " + weekDay + " at " + time , "week" : week.week, "week_id":week.pk})
 
     games = Game.objects.filter(week=week)
     users = User.objects.all()
 
     table = createTable(games=games, users=users)
 
-    return render(request, 'picks/results.html', context={"table": table})
+    return render(request, 'picks/results.html', context={"week": week.week, "week_id": week.pk, "table": table})
 
 @login_required
 def getUserPicks(request):
@@ -89,7 +84,7 @@ def getUserPicks(request):
     users = User.objects.all()
     table = createTable(games=games, users=[request.user])
 
-    return render(request, 'picks/results.html', context={"table": table})
+    return render(request, 'picks/results.html', context={"week": week.week, "table": table})
 
 def createTable(games, users):
     table = []
@@ -142,7 +137,6 @@ def createTable(games, users):
     return table
 
 def correct_guess(week):
-    print(week)
     wrong = 0
     for game in week:
         if game.get("header"):
