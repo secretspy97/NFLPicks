@@ -6,5 +6,3 @@ applications:
   command: bash ./run.sh
   timeout: 180
   buildpack: https://github.com/cloudfoundry/python-buildpack
-services:
-  - nfl-db

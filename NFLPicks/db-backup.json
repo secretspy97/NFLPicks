@@ -1,0 +1,798 @@
+[
+{
+   "model": "picks.team",
+   "pk": 1,
+   "fields": {
+      "team_name": "Cardinals",
+      "team_abbrev": "ARI"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 2,
+   "fields": {
+      "team_name": "Falcons",
+      "team_abbrev": "ATL"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 3,
+   "fields": {
+      "team_name": "Ravens",
+      "team_abbrev": "BAL"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 4,
+   "fields": {
+      "team_name": "Bills",
+      "team_abbrev": "BUF"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 5,
+   "fields": {
+      "team_name": "Panthers",
+      "team_abbrev": "CAR"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 6,
+   "fields": {
+      "team_name": "Bears",
+      "team_abbrev": "CHI"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 7,
+   "fields": {
+      "team_name": "Bengals",
+      "team_abbrev": "CIN"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 8,
+   "fields": {
+      "team_name": "Browns",
+      "team_abbrev": "CLE"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 9,
+   "fields": {
+      "team_name": "Cowboys",
+      "team_abbrev": "DAL"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 10,
+   "fields": {
+      "team_name": "Broncos",
+      "team_abbrev": "DEN"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 11,
+   "fields": {
+      "team_name": "Lions",
+      "team_abbrev": "DET"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 12,
+   "fields": {
+      "team_name": "Packers",
+      "team_abbrev": "GB"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 13,
+   "fields": {
+      "team_name": "Texans",
+      "team_abbrev": "HOU"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 14,
+   "fields": {
+      "team_name": "Colts",
+      "team_abbrev": "IND"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 15,
+   "fields": {
+      "team_name": "Jaguars",
+      "team_abbrev": "JAX"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 16,
+   "fields": {
+      "team_name": "Chiefs",
+      "team_abbrev": "KC"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 17,
+   "fields": {
+      "team_name": "Dolphins",
+      "team_abbrev": "MIA"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 18,
+   "fields": {
+      "team_name": "Vikings",
+      "team_abbrev": "MIN"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 19,
+   "fields": {
+      "team_name": "Patriots",
+      "team_abbrev": "NE"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 20,
+   "fields": {
+      "team_name": "Saints",
+      "team_abbrev": "NO"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 21,
+   "fields": {
+      "team_name": "Giants",
+      "team_abbrev": "NYG"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 22,
+   "fields": {
+      "team_name": "Jets",
+      "team_abbrev": "NYJ"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 23,
+   "fields": {
+      "team_name": "Raiders",
+      "team_abbrev": "OAK"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 24,
+   "fields": {
+      "team_name": "Eagles",
+      "team_abbrev": "PHI"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 25,
+   "fields": {
+      "team_name": "Steelers",
+      "team_abbrev": "PIT"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 26,
+   "fields": {
+      "team_name": "Chargers",
+      "team_abbrev": "LAC"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 27,
+   "fields": {
+      "team_name": "49ers",
+      "team_abbrev": "SF"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 28,
+   "fields": {
+      "team_name": "Seahawks",
+      "team_abbrev": "SEA"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 29,
+   "fields": {
+      "team_name": "Rams",
+      "team_abbrev": "LA"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 30,
+   "fields": {
+      "team_name": "Buccaneers",
+      "team_abbrev": "TB"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 31,
+   "fields": {
+      "team_name": "Titans",
+      "team_abbrev": "TEN"
+   }
+},
+{
+   "model": "picks.team",
+   "pk": 32,
+   "fields": {
+      "team_name": "Redskins",
+      "team_abbrev": "WAS"
+   }
+},
+{
+   "model": "picks.week",
+   "pk": 10,
+   "fields": {
+      "year": 2017,
+      "week": "REG1",
+      "starts": "2017-09-08T00:30:00Z",
+      "ends": "2017-09-12T02:20:00Z",
+      "saveBackup": false
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 143,
+   "fields": {
+      "home": 19,
+      "away": 16,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-08T00:30:00Z",
+      "home_score": 27,
+      "away_score": 42,
+      "winner": 16
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 144,
+   "fields": {
+      "home": 4,
+      "away": 22,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T17:00:00Z",
+      "home_score": 21,
+      "away_score": 12,
+      "winner": 4
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 145,
+   "fields": {
+      "home": 6,
+      "away": 2,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T17:00:00Z",
+      "home_score": 17,
+      "away_score": 23,
+      "winner": 2
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 146,
+   "fields": {
+      "home": 7,
+      "away": 3,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T17:00:00Z",
+      "home_score": 0,
+      "away_score": 20,
+      "winner": 3
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 147,
+   "fields": {
+      "home": 8,
+      "away": 25,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T17:00:00Z",
+      "home_score": 18,
+      "away_score": 21,
+      "winner": 25
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 148,
+   "fields": {
+      "home": 11,
+      "away": 1,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T17:00:00Z",
+      "home_score": 35,
+      "away_score": 23,
+      "winner": 11
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 149,
+   "fields": {
+      "home": 13,
+      "away": 15,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T17:00:00Z",
+      "home_score": 7,
+      "away_score": 29,
+      "winner": 15
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 150,
+   "fields": {
+      "home": 31,
+      "away": 23,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T17:00:00Z",
+      "home_score": 16,
+      "away_score": 26,
+      "winner": 23
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 151,
+   "fields": {
+      "home": 32,
+      "away": 24,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T17:00:00Z",
+      "home_score": 17,
+      "away_score": 30,
+      "winner": 24
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 152,
+   "fields": {
+      "home": 29,
+      "away": 14,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T20:05:00Z",
+      "home_score": 46,
+      "away_score": 9,
+      "winner": 29
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 153,
+   "fields": {
+      "home": 12,
+      "away": 28,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T20:25:00Z",
+      "home_score": 17,
+      "away_score": 9,
+      "winner": 12
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 154,
+   "fields": {
+      "home": 27,
+      "away": 5,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-10T20:25:00Z",
+      "home_score": 3,
+      "away_score": 23,
+      "winner": 5
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 155,
+   "fields": {
+      "home": 9,
+      "away": 21,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-11T00:30:00Z",
+      "home_score": 19,
+      "away_score": 3,
+      "winner": 9
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 156,
+   "fields": {
+      "home": 18,
+      "away": 20,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-11T23:10:00Z",
+      "home_score": null,
+      "away_score": null,
+      "winner": null
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 157,
+   "fields": {
+      "home": 10,
+      "away": 26,
+      "spread": 0,
+      "week": 10,
+      "start_time": "2017-09-12T02:20:00Z",
+      "home_score": null,
+      "away_score": null,
+      "winner": null
+   }
+},
+{
+   "model": "auth.user",
+   "pk": 1,
+   "fields": {
+      "password": "pbkdf2_sha256$36000$eS65NLGTyz15$5oArz07xNnZPAcHrheP3ay/GTR9PA1VYEQYhiwwljAk=",
+      "last_login": "2017-09-11T14:24:04.157Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "Nathan",
+      "last_name": "Connor",
+      "email": "nxc5929@rit.edu",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2017-08-26T14:21:43Z",
+      "groups": [
+         1
+      ],
+      "user_permissions": []
+   }
+},
+{
+   "model": "auth.user",
+   "pk": 31,
+   "fields": {
+      "password": "pbkdf2_sha256$36000$BOqys5ZoZGyc$BycNdnv8FT8fRea1meKptLXySpluv03NNKfShM0uHxo=",
+      "last_login": "2017-09-10T02:33:01Z",
+      "is_superuser": false,
+      "username": "kjconnor6",
+      "first_name": "Ken",
+      "last_name": "Connor",
+      "email": "kjconnor6@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-09-06T01:53:29Z",
+      "groups": [
+         1
+      ],
+      "user_permissions": []
+   }
+},
+{
+   "model": "picks.mondaytiebreaker",
+   "pk": 2,
+   "fields": {
+      "user": 1,
+      "week": 10,
+      "totalScore": 42
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 144,
+   "fields": {
+      "user": 1,
+      "game": 146,
+      "pick": 3
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 145,
+   "fields": {
+      "user": 1,
+      "game": 147,
+      "pick": 25
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 146,
+   "fields": {
+      "user": 1,
+      "game": 144,
+      "pick": 4
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 147,
+   "fields": {
+      "user": 1,
+      "game": 145,
+      "pick": 2
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 148,
+   "fields": {
+      "user": 1,
+      "game": 155,
+      "pick": 21
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 149,
+   "fields": {
+      "user": 1,
+      "game": 143,
+      "pick": 19
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 150,
+   "fields": {
+      "user": 1,
+      "game": 157,
+      "pick": 10
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 151,
+   "fields": {
+      "user": 1,
+      "game": 150,
+      "pick": 23
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 152,
+   "fields": {
+      "user": 1,
+      "game": 156,
+      "pick": 18
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 153,
+   "fields": {
+      "user": 1,
+      "game": 151,
+      "pick": 24
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 154,
+   "fields": {
+      "user": 1,
+      "game": 153,
+      "pick": 12
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 155,
+   "fields": {
+      "user": 1,
+      "game": 148,
+      "pick": 1
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 156,
+   "fields": {
+      "user": 1,
+      "game": 149,
+      "pick": 13
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 157,
+   "fields": {
+      "user": 1,
+      "game": 152,
+      "pick": 14
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 158,
+   "fields": {
+      "user": 1,
+      "game": 154,
+      "pick": 5
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 159,
+   "fields": {
+      "user": 31,
+      "game": 154,
+      "pick": 5
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 160,
+   "fields": {
+      "user": 31,
+      "game": 153,
+      "pick": 12
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 161,
+   "fields": {
+      "user": 31,
+      "game": 145,
+      "pick": 2
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 162,
+   "fields": {
+      "user": 31,
+      "game": 144,
+      "pick": 4
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 163,
+   "fields": {
+      "user": 31,
+      "game": 150,
+      "pick": 23
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 164,
+   "fields": {
+      "user": 31,
+      "game": 151,
+      "pick": 24
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 165,
+   "fields": {
+      "user": 31,
+      "game": 152,
+      "pick": 14
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 166,
+   "fields": {
+      "user": 31,
+      "game": 146,
+      "pick": 3
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 167,
+   "fields": {
+      "user": 31,
+      "game": 147,
+      "pick": 25
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 168,
+   "fields": {
+      "user": 31,
+      "game": 148,
+      "pick": 1
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 169,
+   "fields": {
+      "user": 31,
+      "game": 149,
+      "pick": 13
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 170,
+   "fields": {
+      "user": 31,
+      "game": 143,
+      "pick": 19
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 171,
+   "fields": {
+      "user": 31,
+      "game": 156,
+      "pick": 18
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 172,
+   "fields": {
+      "user": 31,
+      "game": 155,
+      "pick": 21
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 173,
+   "fields": {
+      "user": 31,
+      "game": 157,
+      "pick": 10
+   }
+}
+]

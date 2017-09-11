@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from .models import Week, Game, Team, PlayerPick
-from .nflData import updateGames, getCurrentWeekYear
+from django.contrib.auth.models import User, Group
+from .models import Week, Game, Team, PlayerPick, MondayTieBreaker
+from .nflData import updateGames
 from django.utils import timezone
 
 
@@ -13,7 +13,8 @@ def mainPage(request):
 
 @login_required
 def getPicks(request):
-    week, year = getCurrentWeekYear()
+    week = request.GET.get('week')
+    year = request.GET.get('year')
     week = Week.objects.get(week=week, year=year)
     games = Game.objects.filter(week=week)
 
@@ -40,15 +41,24 @@ def submitPicks(request):
             playerPick, create = PlayerPick.objects.get_or_create(user=request.user, game=game)
             playerPick.pick = team
             playerPick.save()
+
+    # Tiebreaker
+    tiebreaker = request.POST.get("tiebreaker")
+    if playerPick:
+        week = playerPick.game.week
+        MondayTieBreaker.objects.create(user=request.user, week=week, totalScore=tiebreaker)
+
     return HttpResponseRedirect('/viewPicks/')
 
 
 @login_required
 def getResults(request):
     updateGames()
-    week, year = getCurrentWeekYear()
+    week = request.GET.get('week')
+    year = request.GET.get('year')
     week = Week.objects.get(week=week, year=year)
     return getPreviousResults(request, week.pk)
+
 
 @login_required
 def getPreviousResults(request, week):
@@ -59,34 +69,30 @@ def getPreviousResults(request, week):
 
     # Time to view data?
     if timezone.now() < week.starts:
-        weekDay = week.starts.strftime("%A")
-        try:  # Server
-            time = week.starts.strftime("%-I:%M%p")
-        except:  # Windows
-            time = week.starts.strftime("%#I:%M%p")
         return render(request, 'picks/results.html',
-                      context={"message": "Picks are still open. Results will appear after kickoff on " + weekDay + " at " + time , "week" : week.week, "week_id":week.pk})
+                      context={"message": "Picks are still open. Results will appear after kickoff", "week": week.week, "week_id": week.pk})
 
-    games = Game.objects.filter(week=week)
     users = User.objects.all()
 
-    table = createTable(games=games, users=users)
+    table = createTable(week=week, users=users)
 
     return render(request, 'picks/results.html', context={"week": week.week, "week_id": week.pk, "table": table})
 
+
 @login_required
 def getUserPicks(request):
-    week, year = getCurrentWeekYear()
+    week = request.GET.get('week')
+    year = request.GET.get('year')
     week = Week.objects.get(week=week, year=year)
 
-    updateGames()
-    games = Game.objects.filter(week=week)
-    users = User.objects.all()
-    table = createTable(games=games, users=[request.user])
+    table = createTable(week=week, users=[request.user])
 
     return render(request, 'picks/results.html', context={"week": week.week, "table": table})
 
-def createTable(games, users):
+
+def createTable(week, users):
+    games = Game.objects.filter(week=week)
+
     table = []
 
     # Creates headers
@@ -106,11 +112,14 @@ def createTable(games, users):
         if home_score != None and away_score != None:
             score = str(away_score) + " | " + str(home_score)
         else:
-            try: #Server
-                score = game.start_time.strftime("%a %-Ipm")
-            except: #Windows
-                score = game.start_time.strftime("%a %#Ipm")
+            score = (game.start_time - timezone.timedelta(hours=4)).strftime('%a')
+
         scores.append({"val": score, "header": True})
+
+    # Tie Breaker
+    headers.append({"val": "Monday Tiebreaker", "header": True})
+    spread.append({"val": "", "header": True})
+    scores.append({"val": "", "header": True})
 
     table.append(headers)
     table.append(spread)
@@ -131,10 +140,19 @@ def createTable(games, users):
             else:
                 row.append({"val": ""})
 
+        # Monday Tiebreaker
+
+        if MondayTieBreaker.objects.filter(user=user, week=week).exists():
+            tiebreaker = MondayTieBreaker.objects.get(user=user, week=week)
+            row.append({"val": tiebreaker.totalScore})
+        else:
+            row.append({"val": ""})
+
         table.append(row)
 
     table = sorted(table, key=correct_guess)
     return table
+
 
 def correct_guess(week):
     wrong = 0
@@ -145,3 +163,37 @@ def correct_guess(week):
             wrong += 1
 
     return wrong
+
+
+@login_required
+def getSpread(request):
+    user = request.user
+    if user.groups.filter(name='modifySpread').exists():
+        week = request.GET.get('week')
+        year = request.GET.get('year')
+        week = Week.objects.get(week=week, year=year)
+        games = Game.objects.filter(week=week)
+
+        return render(request, 'picks/setSpread.html', context={"matches": games})
+    else:
+        return render(request, 'base.html', context={"message": "Unauthorized"})
+
+@login_required
+def setSpread(request):
+    user = request.user
+    if user.groups.filter(name='modifySpread').exists():
+        for key in request.POST:
+            if key.isdigit():
+                spread = request.POST.get(key)
+            else:
+                spread = None
+
+            # If the team pick is not None
+            if spread:
+                game = Game.objects.get(pk=int(key))
+                game.spread = spread
+                game.save()
+
+        return render(request, 'base.html', context={"message": "The spread has been updated"})
+    else:
+        return render(request, 'base.html', context={"message": "Unauthorized"})

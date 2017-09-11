@@ -5,3 +5,9 @@ NFLPicks/picks/__pycache__/*
 NFLPicks/accounts/migrations/*
 NFLPicks/picks/migrations/*
 !NFLPicks/picks/migrations/__init__.py
+.idea/
+NFLPicks/middleware/__pycache__/
+NFLPicks/picks/templatetags/__pycache__/
+NFLPicks/security/__pycache__/
+NFLPicks/security/migrations/__pycache__/
+NFLPicks/middleware/__pycache__/

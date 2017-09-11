@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: Freshman;
-    src:"{% static "picks/Freshman.ttf" %}";
+    src:"{% static 'Freshman.ttf' %}";
 }
 
 .mainBanner{

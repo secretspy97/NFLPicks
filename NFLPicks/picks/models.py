@@ -20,6 +20,7 @@ class Week(models.Model):
     week = models.CharField(max_length=4)
     starts = models.DateTimeField()
     ends = models.DateTimeField()
+    saveBackup = models.BooleanField(default=False)
 
 # Create your models here.
 class Game(models.Model):
@@ -36,9 +37,14 @@ class Game(models.Model):
         return self.away.team_abbrev + " @ " + self.home.team_abbrev
 
     class Meta:
-        ordering = ['start_time', 'home']
+        ordering = ['pk']
 
 class PlayerPick(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='game')
     pick = models.ForeignKey(Team, on_delete=models.CASCADE, null=True, blank=True)
+
+class MondayTieBreaker(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tieuser')
+    week = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='tieweek')
+    totalScore = models.IntegerField()

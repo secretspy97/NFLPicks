@@ -17,7 +17,12 @@ class PlayerPicksAdmin(admin.ModelAdmin):
     model = PlayerPick
     list_display = ['user', 'game', 'pick']
 
+class TiebreakerAdmin(admin.ModelAdmin):
+    model = MondayTieBreaker
+    list_display = ['user', 'week', 'totalScore']
+
 # Register your models here.
 admin.site.register(Week, WeekAdmin)
 admin.site.register(Team, TeamsAdmin)
 admin.site.register(PlayerPick, PlayerPicksAdmin)
+admin.site.register(MondayTieBreaker, TiebreakerAdmin)

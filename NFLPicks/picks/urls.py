@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^results/$', views.getResults, name='results'),
     url(r'^results/(?P<week>[0-9]+)/$', views.getPreviousResults, name='previousResults'),
     url(r'^viewPicks/$', views.getUserPicks, name='userPicks'),
-
+    url(r'^setSpread/$', views.setSpread, name='setSpread'),
+    url(r'^getSpread/$', views.getSpread, name='getSpread'),
 ]

@@ -26,7 +26,7 @@ SECRET_KEY = 'gb!&4)3qal2)00fuq-z$--=l^or*iz$py+=wx9eu(p0d2seq1v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nfl-picks.run.aws-usw02-pr.ice.predix.io', 'localhost']
+ALLOWED_HOSTS = ['nfl-picks.run.aws-usw02-pr.ice.predix.io', 'localhost', 'nfl-picks2.run.aws-usw02-pr.ice.predix.io']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'picks.apps.PicksConfig',
     'accounts.apps.RegistrationConfig',
+    'security.apps.SecurityConfig',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'NFLPicks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-if os.environ.get('VCAP_SERVICES') != None:
+if os.environ.get('VCAP_SERVICES') != None and False:
     DATABASES = {'default': dj_database_url.config()}   #Database autconfig, uncomment to automatically connect to bound postgres service
 else:
     DATABASES = {###defualt sql database packeged with django
@@ -118,9 +119,9 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/New_York'
 
-USE_I18N = True
+USE_I18N = False
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -129,3 +130,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'nflpicksconnor@gmail.com'
+EMAIL_HOST_PASSWORD = 'Secret06'

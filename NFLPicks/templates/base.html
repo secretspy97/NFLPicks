@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load group_extra %}
 
 <html lang="en">
 <head>
@@ -10,8 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'picks/main.css' %}">
-    <link id="size-stylesheet" rel="stylesheet" type="text/css" href="{% static 'picks/wide.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <link id="size-stylesheet" rel="stylesheet" type="text/css" href="{% static 'wide.css' %}">
 
 </head>
 
@@ -26,7 +27,7 @@
 <div class="mainBanner">
     <h1>
         NFL 2017 Season Picks
-        <img align="right" src="{% static 'picks/Logo-NFL.png' %}" alt="My image"/>
+        <img align="right" src="{% static 'Logo-NFL.png' %}" alt="My image"/>
     </h1>
 </div>
 
@@ -42,18 +43,25 @@
         <button>Results</button>
     </a>
 
+    {% if request.user|has_group:"modifySpread" %}
+        <a href="/getSpread">
+            <button>Update Spread</button>
+        </a>
+    {% endif %}
+
+
     {% if user.is_authenticated %}
-    <button style="float: right;">{{user.username}}</button>
-    <a href="/accounts/logout">
-        <button  style="float: right;">Logout</button>
-    </a>
+        <button style="float: right;">{{user.username}}</button>
+        <a href="/accounts/logout">
+            <button  style="float: right;">Logout</button>
+        </a>
     {% else %}
-    <a href="/accounts/login">
-        <button  style="float: right;">Login</button>
-    </a>
-    <a href="/accounts/createUser">
-        <button  style="float: right;">Create User</button>
-    </a>
+        <a href="/accounts/login">
+            <button  style="float: right;">Login</button>
+        </a>
+        <a href="/accounts/createUser">
+            <button  style="float: right;">Create User</button>
+        </a>
     {% endif %}
 </div>
 
@@ -79,13 +87,13 @@
     function adjustStyle(width) {
         width = parseInt(width);
         if (width < 550) {
-            $("#size-stylesheet").attr("href", "{% static 'picks/mobile.css' %}");
+            $("#size-stylesheet").attr("href", "{% static 'mobile.css' %}");
         } else if (width < 1170) {
-            $("#size-stylesheet").attr("href", "{% static 'picks/narrow.css' %}");
+            $("#size-stylesheet").attr("href", "{% static 'narrow.css' %}");
         } else {
-            $("#size-stylesheet").attr("href", "{% static 'picks/wide.css' %}");
+            $("#size-stylesheet").attr("href", "{% static 'wide.css' %}");
         }
-        $("#size-stylesheet").attr("href", "{% static 'picks/wide.css' %}");
+        $("#size-stylesheet").attr("href", "{% static 'wide.css' %}");
     }
 
     $(function() {

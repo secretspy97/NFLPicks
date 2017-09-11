@@ -13,8 +13,7 @@ def createUser(request):
         # check whether it's valid:
         if userForm.is_valid():
             new_user = User.objects.create_user(**userForm.cleaned_data)
-            # login(new_user)
-            return render(request, 'base.html', context={"message": "Your account has been created"})
+            return render(request, 'base.html', context={"message": "Your account has been created. Click 'Login' to Proceed"})
 
     # if a GET (or any other method) we'll create a blank form
     else:

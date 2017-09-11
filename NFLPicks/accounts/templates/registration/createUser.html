@@ -2,6 +2,12 @@
 
 {% block content %}
 
+<style>
+    .tag{
+        width: 8%
+    }
+</style>
+
 {% if form.errors %}
 <p>Please enter all fields</p>
 {% endif %}
@@ -10,28 +16,30 @@
     {% csrf_token %}
 
     <div>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
+        <label class="tag" for="id_username">Username:</label>
+        <input type="text" name="username" maxlength="150" required="" id="id_username">
     </div>
     <div>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
+        <label class="tag" for="id_password">Password:</label>
+        <input type="password" name="password" maxlength="128" required="" id="id_password">
+    </div>
+    <hr>
+    <div>
+        <label class="tag" for="id_first_name">First name:</label>
+        <input type="text" name="first_name" maxlength="30" id="id_first_name">
     </div>
     <div>
-        <td>{{ form.first_name.label_tag }}</td>
-        <td>{{ form.first_name }}</td>
+        <label class="tag" for="id_last_name">Last name:</label>
+        <input type="text" name="last_name" maxlength="30" id="id_last_name">
     </div>
     <div>
-        <td>{{ form.last_name.label_tag }}</td>
-        <td>{{ form.last_name }}</td>
-    </div>
-    <div>
-        <td>{{ form.email.label_tag }}</td>
-        <td>{{ form.email }}</td>
+        <label class="tag" for="id_email">Email address:</label>
+        <input type="email" name="email" maxlength="254" id="id_email">
     </div>
 
+    <br>
     <div>
-        <input type="submit" value="Create" />
+        <input type="submit" value="Create">
     </div>
 </form>
 

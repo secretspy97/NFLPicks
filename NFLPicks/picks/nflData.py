@@ -19,14 +19,18 @@ def updateGames():
         games_end = getDate(games[-1])
         year = games[0][13]
         week = games[0][12]
-        game_week, created = Week.objects.get_or_create(year=year, week=week, starts=games_start, ends=games_end)
+        if Week.objects.filter(year=year, week=week).exists():
+            game_week = Week.objects.get(year=year, week=week)
+            created = False
+        else:
+            game_week, created = Week.objects.get_or_create(year=year, week=week, starts=games_start, ends=games_end)
 
         # Creates inital games:
         game_objects = []
         if created:
             for game in games:
-                home = getTeam(game[4])
-                away = getTeam(game[6])
+                home = getTeam(game[6])
+                away = getTeam(game[4])
                 spread = 0
                 week = game_week
                 start_time = getDate(game)
@@ -35,10 +39,10 @@ def updateGames():
 
         # Update scores
         for game in games:
-            home = getTeam(game[4])
-            home_score = int(game[5])
-            away = getTeam(game[6])
-            away_score = int(game[7])
+            home = getTeam(game[6])
+            home_score = int(game[7])
+            away = getTeam(game[4])
+            away_score = int(game[5])
             status = game[2]
             week = game_week
             game_object = Game.objects.get(week=week, home=home, away=away)
@@ -70,11 +74,15 @@ def getTeam(team_abbrev):
         return Team.objects.get(pk=1)
 
 def getDate(game):
-    time_code = {"Thu":3, "Fri":4, "Sat":5, "Sun":6}
+    time_code = {"Thu":3, "Fri":4, "Sat":5, "Sun":6, "Mon":7}
     date = game[0]
+    print(date)
 
     today = datetime.date.today()
-    day = today + datetime.timedelta( (time_code[date]-today.weekday()) % 7)
+    days_added = datetime.timedelta( days=(time_code[date]-today.weekday()) )
+    day = today + days_added
+    print(today, days_added)
+    print(day)
 
     time_input = (game[1]).split(":") #19:00:00
     time = datetime.time(int(time_input[0]), int(time_input[1]), int(time_input[2]))

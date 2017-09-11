@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="/submitPicks/" method="post">
+<form action="/setSpread/" method="post">
     {% csrf_token %}
 
     <label class="radio-inline" style="width: 9%;">
@@ -22,21 +22,16 @@
             {{match.start_time}}
         </label>
         <label class="radio-inline" style="width: 8%;">
-            <input type="radio" name="{{match.pk}}" value="{{match.home.team_abbrev}}" required>{{match.home.team_name}}
+            {{match.home.team_name}}
         </label>
         <label class="radio-inline" style="width: 8%;">
-            <input type="radio" name="{{match.pk}}" value="{{match.away.team_abbrev}}" required>{{match.away.team_name}}
+            {{match.away.team_name}}
         </label>
         <label class="radio-inline">
-            {{match.home.team_name}}: {{match.spread}}
+            {{match.home.team_name}}:<input type="number" name="{{match.pk}}" value="{{match.spread}}" required>
         </label>
         <hr>
     {% endfor %}
-
-    <label class="radio-inline">
-        Last Game Monday Total Score: <input type="number" name="tiebreaker" required>
-    </label>
-    <hr>
 
     <input type="submit" value="Submit">
 </form>
