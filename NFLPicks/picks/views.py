@@ -67,6 +67,7 @@ def getPreviousResults(request, week):
 
     # Time to view data?
     if timezone.now() < week.starts:
+
         return render(request, 'picks/results.html',
                       context={"message": "Picks are still open. Results will appear after kickoff", "week": week.week, "week_id": week.pk})
 
@@ -95,7 +96,7 @@ def createTable(week, users):
     # Creates headers
     headers = [{"val": "Game", "header": True}]
     scores = [{"val": "Score","header": True}]
-    spread = [{"val": "Spread", "header":True}]
+    spread = [{"val": "Spread", "header": True}]
     for game in games:
         headers.append({"val": game.__str__(), "header": True})
 
