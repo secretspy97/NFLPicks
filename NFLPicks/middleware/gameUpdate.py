@@ -3,17 +3,14 @@ from picks.models import Week
 from security.views import save_request
 from django.utils import timezone
 
+
 def update_games(get_response):
     # One-time configuration and initialization.
 
     def middleware(request):
-        request.GET = request.GET.copy()
         # Code to be executed for each request before
         # the view (and later middleware) are called.
         week, year = getCurrentWeekYear()
-        # Add week and year to request
-        request.GET['week'] = week
-        request.GET['year'] = year
 
         if not Week.objects.filter(week=week, year=year).exists():
             updateGames()

@@ -457,9 +457,9 @@
       "spread": 0,
       "week": 10,
       "start_time": "2017-09-11T23:10:00Z",
-      "home_score": null,
-      "away_score": null,
-      "winner": null
+      "home_score": 29,
+      "away_score": 19,
+      "winner": 18
    }
 },
 {
@@ -471,9 +471,17 @@
       "spread": 0,
       "week": 10,
       "start_time": "2017-09-12T02:20:00Z",
-      "home_score": null,
-      "away_score": null,
-      "winner": null
+      "home_score": 24,
+      "away_score": 21,
+      "winner": 10
+   }
+},
+{
+   "model": "auth.group",
+   "pk": 1,
+   "fields": {
+      "name": "modifySpread",
+      "permissions": []
    }
 },
 {
@@ -481,7 +489,7 @@
    "pk": 1,
    "fields": {
       "password": "pbkdf2_sha256$36000$eS65NLGTyz15$5oArz07xNnZPAcHrheP3ay/GTR9PA1VYEQYhiwwljAk=",
-      "last_login": "2017-09-11T14:24:04.157Z",
+      "last_login": "2017-09-12T13:02:00.008Z",
       "is_superuser": true,
       "username": "admin",
       "first_name": "Nathan",
@@ -490,7 +498,9 @@
       "is_staff": true,
       "is_active": true,
       "date_joined": "2017-08-26T14:21:43Z",
-      "groups": [],
+      "groups": [
+         1
+      ],
       "user_permissions": []
    }
 },
@@ -508,7 +518,9 @@
       "is_staff": false,
       "is_active": true,
       "date_joined": "2017-09-06T01:53:29Z",
-      "groups": [],
+      "groups": [
+         1
+      ],
       "user_permissions": []
    }
 },

@@ -51,7 +51,7 @@ def updateGames():
                 game_object.away_score = away_score
                 spread = game_object.spread
 
-                if((home_score + spread) > away_score):
+                if(home_score + spread) > away_score:
                     winner = home
                 else:
                     winner = away
@@ -74,9 +74,8 @@ def getTeam(team_abbrev):
         return Team.objects.get(pk=1)
 
 def getDate(game):
-    time_code = {"Thu":3, "Fri":4, "Sat":5, "Sun":6, "Mon":7}
+    time_code = {"Thu": 3, "Fri": 4, "Sat": 5, "Sun": 6, "Mon": 7}
     date = game[0]
-    print(date)
 
     today = datetime.date.today()
     days_added = datetime.timedelta( days=(time_code[date]-today.weekday()) )

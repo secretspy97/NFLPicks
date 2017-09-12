@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from .models import Week, Game, Team, PlayerPick, MondayTieBreaker
-from .nflData import updateGames
+from .nflData import updateGames, getCurrentWeekYear
 from django.utils import timezone
 
 
@@ -13,8 +13,7 @@ def mainPage(request):
 
 @login_required
 def getPicks(request):
-    week = request.GET.get('week')
-    year = request.GET.get('year')
+    week, year = getCurrentWeekYear()
     week = Week.objects.get(week=week, year=year)
     games = Game.objects.filter(week=week)
 
@@ -54,8 +53,7 @@ def submitPicks(request):
 @login_required
 def getResults(request):
     updateGames()
-    week = request.GET.get('week')
-    year = request.GET.get('year')
+    week, year = getCurrentWeekYear()
     week = Week.objects.get(week=week, year=year)
     return getPreviousResults(request, week.pk)
 
@@ -81,8 +79,7 @@ def getPreviousResults(request, week):
 
 @login_required
 def getUserPicks(request):
-    week = request.GET.get('week')
-    year = request.GET.get('year')
+    week, year = getCurrentWeekYear()
     week = Week.objects.get(week=week, year=year)
 
     table = createTable(week=week, users=[request.user])
@@ -169,8 +166,7 @@ def correct_guess(week):
 def getSpread(request):
     user = request.user
     if user.groups.filter(name='modifySpread').exists():
-        week = request.GET.get('week')
-        year = request.GET.get('year')
+        week, year = getCurrentWeekYear()
         week = Week.objects.get(week=week, year=year)
         games = Game.objects.filter(week=week)
 

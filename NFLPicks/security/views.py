@@ -16,7 +16,7 @@ def save_request(request=None, password=None):
     if security == "a12b3c4e5d":
 
         with open(FILE_NAME,'w') as file: # Point stdout at a file for dumping data to.
-            call_command('dumpdata', 'picks', 'auth.user', format='json',indent=3,stdout=file)
+            call_command('dumpdata', 'picks', 'auth.user', 'auth.group', format='json',indent=3,stdout=file)
             file.close()
 
         with open(FILE_NAME,'r') as file:

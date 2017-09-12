@@ -11,8 +11,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
-    <link id="size-stylesheet" rel="stylesheet" type="text/css" href="{% static 'wide.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}" />
+    <link rel="stylesheet" media="screen and (min-width: 601px)" href="{% static 'desktop.css' %}" />
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="{% static 'mobile.css' %}" />
 
 </head>
 
@@ -82,27 +83,5 @@
     </div>
     >
 </footer>
-
-<script>
-    function adjustStyle(width) {
-        width = parseInt(width);
-        if (width < 550) {
-            $("#size-stylesheet").attr("href", "{% static 'mobile.css' %}");
-        } else if (width < 1170) {
-            $("#size-stylesheet").attr("href", "{% static 'narrow.css' %}");
-        } else {
-            $("#size-stylesheet").attr("href", "{% static 'wide.css' %}");
-        }
-        $("#size-stylesheet").attr("href", "{% static 'wide.css' %}");
-    }
-
-    $(function() {
-        adjustStyle($(this).width());
-        $(window).resize(function() {
-            adjustStyle($(this).width());
-        });
-    });
-
-</script>
 
 </html>

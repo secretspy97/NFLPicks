@@ -6,8 +6,8 @@
 
 .mainBanner h1{
     height: 100%;
-    line-height: 1vw;
-    font-size: 5vw;
+    line-height: 110px;
+    font-size: 5.5vw;
 }
 
 .mainBanner img{
@@ -28,7 +28,7 @@
 }
 
 .navBar button{
-    width: 100px;
+    width: 125px;
     height: 100%;
 }
 
