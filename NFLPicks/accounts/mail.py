@@ -5,8 +5,8 @@ def send_message(title, message, attachments):
     email = EmailMessage(
         title,
         message,
-        'nflpicksconnor@example.com',
-        ['nflpicksconnor@example.com'],
+        'nflpicksconnor@gmail.com',
+        ['nflpicksconnor@gmail.com'],
     )
 
     name, content, type = attachments

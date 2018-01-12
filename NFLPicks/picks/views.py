@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group
 from .models import Week, Game, Team, PlayerPick, MondayTieBreaker
 from .nflData import updateGames, getCurrentWeekYear
 from django.utils import timezone
-
+import math
 
 def mainPage(request):
     return render(request, 'base.html')
@@ -45,7 +45,9 @@ def submitPicks(request):
     tiebreaker = request.POST.get("tiebreaker")
     if playerPick:
         week = playerPick.game.week
-        MondayTieBreaker.objects.create(user=request.user, week=week, totalScore=tiebreaker)
+        monday_tie, created = MondayTieBreaker.objects.get_or_create(user=request.user, week=week)
+        monday_tie.totalScore=tiebreaker
+        monday_tie.save()
 
     return HttpResponseRedirect('/viewPicks/')
 
@@ -96,13 +98,26 @@ def createTable(week, users):
     # Creates headers
     headers = [{"val": "Game", "header": True}]
     scores = [{"val": "Score","header": True}]
+    fav = [{"val": "Favorite", "header": True}]
     spread = [{"val": "Spread", "header": True}]
+    under_dog = [{"val": "Underdog", "header": True}]
     for game in games:
         headers.append({"val": game.__str__(), "header": True})
 
+        # Fav
         # Spread
-        spread_val = game.home.team_abbrev + ": " + str(game.spread)
-        spread.append({"val": spread_val, "header": True})
+        # Underdog
+        spread.append({"val": abs(game.spread), "header": True})
+
+        if game.favorite:
+            fav.append({"val": game.favorite.team_abbrev, "header": True})
+            if game.favorite == game.home:
+                under_dog.append({"val": game.away.team_abbrev, "header": True})
+            else:
+                under_dog.append({"val": game.home.team_abbrev, "header": True})
+        else:
+            under_dog.append({"val": "--", "header": True})
+            fav.append({"val": "--", "header": True})
 
         # Score
         home_score = game.home_score
@@ -117,15 +132,19 @@ def createTable(week, users):
     # Tie Breaker
     headers.append({"val": "Monday Tiebreaker", "header": True})
     spread.append({"val": "", "header": True})
+    fav.append({"val": "", "header": True})
     scores.append({"val": "", "header": True})
+    under_dog.append({"val": "", "header": True})
 
     table.append(headers)
+    table.append(fav)
     table.append(spread)
+    table.append(under_dog)
     table.append(scores)
 
     # Creates Played results
     for user in users:
-        row = [{"val": user.get_full_name()}]
+        row = [{"val": user.first_name[0] + " " + user.last_name}]
         for game in games:
             if PlayerPick.objects.filter(user=user, game=game).exists():
                 pick = PlayerPick.objects.get(user=user, game=game)
@@ -188,7 +207,15 @@ def setSpread(request):
             # If the team pick is not None
             if spread:
                 game = Game.objects.get(pk=int(key))
+
+                fav_abbrev = request.POST.get(key + "_fav")
+                fav_team = Team.objects.get(team_abbrev=fav_abbrev)
+                game.favorite = fav_team
+
+                if fav_team == game.home:
+                    spread = -float(spread)
                 game.spread = spread
+
                 game.save()
 
         return render(request, 'base.html', context={"message": "The spread has been updated"})

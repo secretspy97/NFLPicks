@@ -46,7 +46,7 @@ def updateGames():
             status = game[2]
             week = game_week
             game_object = Game.objects.get(week=week, home=home, away=away)
-            if status == "Final":
+            if "final" in status.lower():
                 game_object.home_score = home_score
                 game_object.away_score = away_score
                 spread = game_object.spread

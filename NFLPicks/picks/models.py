@@ -17,7 +17,7 @@ class Team(models.Model):
 
 class Week(models.Model):
     year = models.IntegerField()
-    week = models.CharField(max_length=4)
+    week = models.CharField(max_length=5)
     starts = models.DateTimeField()
     ends = models.DateTimeField()
     saveBackup = models.BooleanField(default=False)
@@ -26,11 +26,12 @@ class Week(models.Model):
 class Game(models.Model):
     home = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='home')
     away = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='away')
-    spread = models.IntegerField()
+    spread = models.FloatField()
     week = models.ForeignKey(Week, on_delete=models.CASCADE)
     start_time = models.DateTimeField()
     home_score = models.IntegerField(null=True, blank=True)
     away_score = models.IntegerField(null=True, blank=True)
+    favorite = models.ForeignKey(Team, on_delete=models.CASCADE, null=True)
     winner = models.ForeignKey(Team, on_delete=models.CASCADE, null=True, blank=True, related_name='winner')
 
     def __str__(self):
@@ -47,4 +48,4 @@ class PlayerPick(models.Model):
 class MondayTieBreaker(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tieuser')
     week = models.ForeignKey(Week, on_delete=models.CASCADE, related_name='tieweek')
-    totalScore = models.IntegerField()
+    totalScore = models.IntegerField(default=0)

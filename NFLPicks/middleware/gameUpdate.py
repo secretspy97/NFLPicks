@@ -17,10 +17,12 @@ def update_games(get_response):
 
         week_obj = Week.objects.get(week=week, year=year)
         if week_obj.starts < timezone.now() < week_obj.ends and not week_obj.saveBackup:
+            updateGames()
             save_request(password="a12b3c4e5d")
             week_obj.saveBackup = True
             week_obj.save()
-        if timezone.now() >= week_obj.ends and week_obj.saveBackup:
+        elif timezone.now() >= week_obj.ends and week_obj.saveBackup:
+            updateGames()
             save_request(password="a12b3c4e5d")
             week_obj.saveBackup = False
             week_obj.save()

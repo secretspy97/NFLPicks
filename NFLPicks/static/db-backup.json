@@ -267,12 +267,23 @@
    }
 },
 {
+   "model": "picks.week",
+   "pk": 11,
+   "fields": {
+      "year": 2017,
+      "week": "REG2",
+      "starts": "2017-09-15T00:25:00Z",
+      "ends": "2017-09-19T00:30:00Z",
+      "saveBackup": true
+   }
+},
+{
    "model": "picks.game",
    "pk": 143,
    "fields": {
       "home": 19,
       "away": 16,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-08T00:30:00Z",
       "home_score": 27,
@@ -286,7 +297,7 @@
    "fields": {
       "home": 4,
       "away": 22,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T17:00:00Z",
       "home_score": 21,
@@ -300,7 +311,7 @@
    "fields": {
       "home": 6,
       "away": 2,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T17:00:00Z",
       "home_score": 17,
@@ -314,7 +325,7 @@
    "fields": {
       "home": 7,
       "away": 3,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T17:00:00Z",
       "home_score": 0,
@@ -328,7 +339,7 @@
    "fields": {
       "home": 8,
       "away": 25,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T17:00:00Z",
       "home_score": 18,
@@ -342,7 +353,7 @@
    "fields": {
       "home": 11,
       "away": 1,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T17:00:00Z",
       "home_score": 35,
@@ -356,7 +367,7 @@
    "fields": {
       "home": 13,
       "away": 15,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T17:00:00Z",
       "home_score": 7,
@@ -370,7 +381,7 @@
    "fields": {
       "home": 31,
       "away": 23,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T17:00:00Z",
       "home_score": 16,
@@ -384,7 +395,7 @@
    "fields": {
       "home": 32,
       "away": 24,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T17:00:00Z",
       "home_score": 17,
@@ -398,7 +409,7 @@
    "fields": {
       "home": 29,
       "away": 14,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T20:05:00Z",
       "home_score": 46,
@@ -412,7 +423,7 @@
    "fields": {
       "home": 12,
       "away": 28,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T20:25:00Z",
       "home_score": 17,
@@ -426,7 +437,7 @@
    "fields": {
       "home": 27,
       "away": 5,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-10T20:25:00Z",
       "home_score": 3,
@@ -440,7 +451,7 @@
    "fields": {
       "home": 9,
       "away": 21,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-11T00:30:00Z",
       "home_score": 19,
@@ -454,7 +465,7 @@
    "fields": {
       "home": 18,
       "away": 20,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-11T23:10:00Z",
       "home_score": 29,
@@ -468,12 +479,236 @@
    "fields": {
       "home": 10,
       "away": 26,
-      "spread": 0,
+      "spread": 0.0,
       "week": 10,
       "start_time": "2017-09-12T02:20:00Z",
       "home_score": 24,
       "away_score": 21,
       "winner": 10
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 158,
+   "fields": {
+      "home": 7,
+      "away": 13,
+      "spread": -6.5,
+      "week": 11,
+      "start_time": "2017-09-15T00:25:00Z",
+      "home_score": 9,
+      "away_score": 13,
+      "winner": 13
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 159,
+   "fields": {
+      "home": 3,
+      "away": 8,
+      "spread": -7.5,
+      "week": 11,
+      "start_time": "2017-09-17T17:00:00Z",
+      "home_score": 24,
+      "away_score": 10,
+      "winner": 3
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 160,
+   "fields": {
+      "home": 5,
+      "away": 4,
+      "spread": -7.5,
+      "week": 11,
+      "start_time": "2017-09-17T17:00:00Z",
+      "home_score": 9,
+      "away_score": 3,
+      "winner": 4
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 161,
+   "fields": {
+      "home": 14,
+      "away": 1,
+      "spread": 7.5,
+      "week": 11,
+      "start_time": "2017-09-17T17:00:00Z",
+      "home_score": 13,
+      "away_score": 16,
+      "winner": 14
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 162,
+   "fields": {
+      "home": 15,
+      "away": 31,
+      "spread": 2.5,
+      "week": 11,
+      "start_time": "2017-09-17T17:00:00Z",
+      "home_score": 16,
+      "away_score": 37,
+      "winner": 31
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 163,
+   "fields": {
+      "home": 16,
+      "away": 24,
+      "spread": -4.5,
+      "week": 11,
+      "start_time": "2017-09-17T17:00:00Z",
+      "home_score": 27,
+      "away_score": 20,
+      "winner": 16
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 164,
+   "fields": {
+      "home": 20,
+      "away": 19,
+      "spread": 6.5,
+      "week": 11,
+      "start_time": "2017-09-17T17:00:00Z",
+      "home_score": 20,
+      "away_score": 36,
+      "winner": 19
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 165,
+   "fields": {
+      "home": 25,
+      "away": 18,
+      "spread": -6.5,
+      "week": 11,
+      "start_time": "2017-09-17T17:00:00Z",
+      "home_score": 26,
+      "away_score": 9,
+      "winner": 25
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 166,
+   "fields": {
+      "home": 30,
+      "away": 6,
+      "spread": -7.5,
+      "week": 11,
+      "start_time": "2017-09-17T17:00:00Z",
+      "home_score": 29,
+      "away_score": 7,
+      "winner": 30
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 167,
+   "fields": {
+      "home": 26,
+      "away": 17,
+      "spread": 4.5,
+      "week": 11,
+      "start_time": "2017-09-17T20:05:00Z",
+      "home_score": 17,
+      "away_score": 19,
+      "winner": 26
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 168,
+   "fields": {
+      "home": 23,
+      "away": 22,
+      "spread": -14.5,
+      "week": 11,
+      "start_time": "2017-09-17T20:05:00Z",
+      "home_score": 45,
+      "away_score": 20,
+      "winner": 23
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 169,
+   "fields": {
+      "home": 10,
+      "away": 9,
+      "spread": 2.5,
+      "week": 11,
+      "start_time": "2017-09-17T20:25:00Z",
+      "home_score": 42,
+      "away_score": 17,
+      "winner": 10
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 170,
+   "fields": {
+      "home": 29,
+      "away": 32,
+      "spread": -2.5,
+      "week": 11,
+      "start_time": "2017-09-17T20:25:00Z",
+      "home_score": 20,
+      "away_score": 27,
+      "winner": 32
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 171,
+   "fields": {
+      "home": 28,
+      "away": 27,
+      "spread": -13.5,
+      "week": 11,
+      "start_time": "2017-09-17T20:25:00Z",
+      "home_score": 12,
+      "away_score": 9,
+      "winner": 27
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 172,
+   "fields": {
+      "home": 2,
+      "away": 12,
+      "spread": -2.5,
+      "week": 11,
+      "start_time": "2017-09-18T00:30:00Z",
+      "home_score": 34,
+      "away_score": 23,
+      "winner": 2
+   }
+},
+{
+   "model": "picks.game",
+   "pk": 173,
+   "fields": {
+      "home": 21,
+      "away": 11,
+      "spread": -3.5,
+      "week": 11,
+      "start_time": "2017-09-19T00:30:00Z",
+      "home_score": 10,
+      "away_score": 24,
+      "winner": 11
    }
 },
 {
@@ -489,7 +724,7 @@
    "pk": 1,
    "fields": {
       "password": "pbkdf2_sha256$36000$eS65NLGTyz15$5oArz07xNnZPAcHrheP3ay/GTR9PA1VYEQYhiwwljAk=",
-      "last_login": "2017-09-12T13:02:00.008Z",
+      "last_login": "2017-09-19T14:29:53.799Z",
       "is_superuser": true,
       "username": "admin",
       "first_name": "Nathan",
@@ -531,6 +766,15 @@
       "user": 1,
       "week": 10,
       "totalScore": 42
+   }
+},
+{
+   "model": "picks.mondaytiebreaker",
+   "pk": 4,
+   "fields": {
+      "user": 1,
+      "week": 11,
+      "totalScore": 52
    }
 },
 {
@@ -801,6 +1045,150 @@
       "user": 31,
       "game": 157,
       "pick": 10
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 174,
+   "fields": {
+      "user": 1,
+      "game": 170,
+      "pick": 29
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 175,
+   "fields": {
+      "user": 1,
+      "game": 171,
+      "pick": 28
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 176,
+   "fields": {
+      "user": 1,
+      "game": 173,
+      "pick": 21
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 177,
+   "fields": {
+      "user": 1,
+      "game": 159,
+      "pick": 3
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 178,
+   "fields": {
+      "user": 1,
+      "game": 158,
+      "pick": 7
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 179,
+   "fields": {
+      "user": 1,
+      "game": 166,
+      "pick": 30
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 180,
+   "fields": {
+      "user": 1,
+      "game": 172,
+      "pick": 12
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 181,
+   "fields": {
+      "user": 1,
+      "game": 168,
+      "pick": 23
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 182,
+   "fields": {
+      "user": 1,
+      "game": 169,
+      "pick": 9
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 183,
+   "fields": {
+      "user": 1,
+      "game": 164,
+      "pick": 19
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 184,
+   "fields": {
+      "user": 1,
+      "game": 165,
+      "pick": 18
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 185,
+   "fields": {
+      "user": 1,
+      "game": 167,
+      "pick": 17
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 186,
+   "fields": {
+      "user": 1,
+      "game": 160,
+      "pick": 4
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 187,
+   "fields": {
+      "user": 1,
+      "game": 161,
+      "pick": 1
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 188,
+   "fields": {
+      "user": 1,
+      "game": 162,
+      "pick": 15
+   }
+},
+{
+   "model": "picks.playerpick",
+   "pk": 189,
+   "fields": {
+      "user": 1,
+      "game": 163,
+      "pick": 24
    }
 }
 ]

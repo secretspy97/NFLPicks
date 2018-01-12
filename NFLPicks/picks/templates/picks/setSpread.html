@@ -7,28 +7,37 @@
     <label class="radio-inline" style="width: 9%;">
         Time
     </label>
-    <label class="radio-inline" style="width: 8%;">
+    <label class="radio-inline" style="width: 5%;">
         Home
     </label>
-    <label class="radio-inline" style="width: 8%;">
+    <label class="radio-inline" style="width: 5%;">
         Away
     </label>
-    <label class="radio-inline" style="width: 8%;">
+    <label class="radio-inline" style="width: 18%;">
         Spread
+    </label>
+    <label class="radio-inline" style="width: 5%;">
+        Favorite
     </label>
     <hr>
     {% for match in matches %}
         <label class="radio-inline" style="width: 9%;">
             {{match.start_time}}
         </label>
-        <label class="radio-inline" style="width: 8%;">
-            {{match.home.team_name}}
+        <label class="radio-inline" style="width: 5%;">
+            {{match.home.team_abbrev}}
         </label>
-        <label class="radio-inline" style="width: 8%;">
-            {{match.away.team_name}}
+        <label class="radio-inline" style="width: 5%;">
+            {{match.away.team_abbrev}}
         </label>
         <label class="radio-inline">
-            {{match.home.team_name}}:<input type="number" name="{{match.pk}}" value="{{match.spread}}" required>
+            <input type="number" step="0.5" min="0" name="{{match.pk}}" value="{{match.spread}}" required>
+        </label>
+        <label class="radio-inline" style="width: 5%;">
+            <input type="radio" name="{{match.pk}}_fav" value="{{match.home.team_abbrev}}" {% ifequal match.home.id match.favorite.id %}checked{% endifequal %} required>{{match.home.team_abbrev}}
+        </label>
+        <label class="radio-inline" style="width: 5%;">
+            <input type="radio" name="{{match.pk}}_fav" value="{{match.away.team_abbrev}}" {% ifequal match.away.id match.favorite.id %}checked{% endifequal %} required>{{match.away.team_abbrev}}
         </label>
         <hr>
     {% endfor %}

@@ -14,7 +14,7 @@
         Away
     </label>
     <label class="radio-inline" style="width: 8%;">
-        Spread
+        Favorite
     </label>
     <hr>
     {% for match in matches %}
@@ -28,7 +28,7 @@
             <input type="radio" name="{{match.pk}}" value="{{match.away.team_abbrev}}" required>{{match.away.team_name}}
         </label>
         <label class="radio-inline">
-            {{match.home.team_name}}: {{match.spread}}
+            {{match.favorite.team_name}}: {{ match.spread }}
         </label>
         <hr>
     {% endfor %}
